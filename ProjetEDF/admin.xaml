@@ -1,0 +1,92 @@
+﻿<Window x:Class="ProjetEDF.admin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjetEDF"
+        mc:Ignorable="d"
+        Title="admin" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="110"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Gestion EDF" FontSize="35" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.RowSpan="1"></TextBlock>
+
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Row="0" Text="les controleurs : " FontSize="16"></TextBlock>
+            <TextBlock Text="les clients : " FontSize="16" Grid.Column="1"></TextBlock>
+        </Grid>
+
+        <ListView Grid.Column="1" Grid.Row="1" Margin="0,30,450,0" Name="lstControleur" SelectionChanged="lstControleur_SelectionChanged">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding idControleur}"></TextBlock>
+                        <TextBlock Text="{Binding nomControleur}"></TextBlock>
+                        <TextBlock Text="{Binding prenomControleur}"></TextBlock>
+                        <TextBlock Text="{Binding ancienReleve}"></TextBlock>
+                        <TextBlock Text="{Binding dernierReleve}"></TextBlock>
+                        <TextBlock Text="{Binding idControleur}"></TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <ListView Grid.Column="1" Grid.Row="1" Margin="500,0,0,0" Name="lstClient" SelectionChanged="lstClient_SelectionChanged">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding idClient}"></TextBlock>
+                        <TextBlock Text="{Binding nomClient}"></TextBlock>
+                        <TextBlock Text="{Binding prenomClient}"></TextBlock>
+                        <TextBlock Text="{Binding loginClient}"></TextBlock>
+                        <TextBlock Text="{Binding mdpControleur}"></TextBlock>
+                        <TextBlock Text="{Binding statutControleur}"></TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="4" Grid.Column="2">
+                <Button Name="btnInsererClient" Click="btnInsererClient_Click" Content="insererClient"></Button>
+            </StackPanel>
+        </Grid>
+
+        <StackPanel Orientation="Vertical" Grid.Column="2" VerticalAlignment="Center" Grid.Row="2">
+            <StackPanel Orientation="Horizontal" Margin="2">
+                <TextBox Text="releve" FontSize="20"></TextBox>
+                <TextBox x:Name="txtReleve" FontSize="20"  Margin="10,0,0,0" ></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <TextBlock Text="Total a du relever" FontSize="20"></TextBlock>
+                <TextBlock x:Name="txtMontantTotal" FontSize="20" Margin="10,0,0,0"></TextBlock>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Grid.Row="2">
+            <Button Name="btninsererControleur" Click="btninsererControleur_Click" Content="insererControleur"></Button>
+        </StackPanel>
+
+    </Grid>
+</Window>
